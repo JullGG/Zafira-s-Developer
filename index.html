@@ -1,143 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zafira's Developer</title>
-<link rel="stylesheet" href="style.css" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
-<style>
-  /* Tambahan CSS untuk modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.7);
-    justify-content: center;
-    align-items: center;
-  }
-  .modal-content {
-    background: #222;
-    color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 400px;
-    position: relative;
-  }
-  .close-btn {
-    position: absolute;
-    top: 8px; right: 12px;
-    font-size: 24px;
-    cursor: pointer;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zafira's Developer Team</title>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://i.imgur.com/9Y3eF5j.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    a {
+      color: #00ccff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    header a {
+      color: #00ccff;
+    }
+    header a:hover {
+      color: #33d6ff;
+    }
+
+    main {
+      flex-grow: 1;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+    h1 strong {
+      color: #00ccff;
+    }
+    h2 {
+      margin-top: 0;
+      font-weight: 700;
+      color: #00b8e6;
+      margin-bottom: 5px;
+    }
+    p.tagline {
+      font-size: 0.9rem;
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: #a0d8ffcc;
+    }
+
+    .btn-group {
+      margin-bottom: 50px;
+    }
+    .btn {
+      background: #00ccff;
+      color: black;
+      border: none;
+      padding: 10px 18px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: #00a3cc;
+      color: white;
+    }
+
+    /* Team section */
+    section.team {
+      margin-bottom: 40px;
+    }
+    section.team h3 {
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #00ccff;
+    }
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .team-box {
+      background: rgba(0,0,0,0.5);
+      border-radius: 15px;
+      width: 250px;
+      overflow: hidden;
+      box-shadow: 0 0 15px #00ccff99;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .team-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px #00ccffcc;
+    }
+    .team-box img {
+      width: 100%;
+      display: block;
+      border-bottom: 2px solid #00ccff;
+      object-fit: cover;
+      height: 250px;
+    }
+    .team-layer {
+      padding: 15px;
+    }
+    .team-layer h4 {
+      margin: 10px 0 5px;
+      font-size: 1.4rem;
+      color: #00ccff;
+    }
+    .team-layer p {
+      margin: 0 0 15px;
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+    .team-layer .btn {
+      margin: 5px 5px 0 0;
+      font-size: 0.9rem;
+      padding: 8px 14px;
+      border-radius: 8px;
+    }
+
+    /* Modal styles */
+    .modal-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-bg.active {
+      display: flex;
+    }
+    .modal {
+      background: #0d1f2d;
+      padding: 20px 25px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 450px;
+      color: #a0d8ff;
+      box-shadow: 0 0 15px #00ccffbb;
+      position: relative;
+      text-align: left;
+    }
+    .modal h4 {
+      margin-top: 0;
+      color: #00ccff;
+    }
+    .modal p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      font-size: 1.6rem;
+      color: #00ccff;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .close-btn:hover {
+      color: #33d6ff;
+    }
+
+    footer {
+      font-size: 0.8rem;
+      color: #008fbf99;
+      margin-top: auto;
+      padding-top: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .team-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .team-box {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <h2>Zafira's Developer</h2>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<header>
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Team</a>
+  <a href="#">Contact</a>
+</header>
 
-<section class="header">
-  <div>
-    <h1>Hello, I'm <span>Zafira's Developer</span></h1>
-    <h3>Frontend Developer</h3>
-    <p>This is a brief introduction or tagline.</p>
-    <div class="buttons">
-      <a href="#team">Hire Me</a>
-      <a href="#contact">Let's Talk</a>
-    </div>
+<main>
+  <h1>Hello, I'm <strong>Zafira's Developer</strong></h1>
+  <h2>Frontend Developer</h2>
+  <p class="tagline">This is a brief introduction or tagline.</p>
+  <div class="btn-group">
+    <a href="#" class="btn">Hire Me</a>
+    <a href="#" class="btn">Let's Talk</a>
   </div>
-</section>
 
-<section class="team" id="team">
-  <h2>Our <span>Developers</span></h2>
-  <div class="cards">
+  <section class="team">
+    <h3>Our <strong>Developers</strong></h3>
+    <div class="team-container">
 
-    <div class="card">
-      <h3>Jul</h3>
-      <p>Frontend Developer</p>
-      <p>+62 822-2941-2573</p>
-      <a class="btn about-btn" data-name="jul" href="javascript:void(0)">About Me</a>
+      <div class="team-box">
+        <img src="https://files.catbox.moe/zgacky.jpg" alt="Jul" />
+        <div class="team-layer">
+          <h4>Jul</h4>
+          <p>Frontend Developer<br>+62 822-2941-2573</p>
+          <a href="https://exonity.tech" class="btn" target="_blank" rel="noopener noreferrer">REST API</a>
+          <a href="https://juul-web-id.xyz" class="btn" target="_blank" rel="noopener noreferrer">Personal Website</a>
+          <a href="#" class="btn" onclick="openModal('jul')">About Me</a>
+        </div>
+      </div>
+
+      <div class="team-box">
+        <img src="https://files.catbox.moe/zgacky.jpg" alt="Pan Pan" />
+        <div class="team-layer">
+          <h4>Pan Pan</h4>
+          <p>Fullstack Developer<br>+62 857-0210-72505</p>
+          <a href="https://exonity.tech" class="btn" target="_blank" rel="noopener noreferrer">REST API</a>
+          <a href="https://dash-colongan.vercel.app/#about" class="btn" target="_blank" rel="noopener noreferrer">Personal Website</a>
+          <a href="#" class="btn" onclick="openModal('panpan')">About Me</a>
+        </div>
+      </div>
+
+      <div class="team-box">
+        <img src="https://files.catbox.moe/cv0yc3.jpg" alt="Rian" />
+        <div class="team-layer">
+          <h4>Rian</h4>
+          <p>Backend Developer<br>+62 815-2936-92739</p>
+          <a href="https://exonity.tech" class="btn" target="_blank" rel="noopener noreferrer">REST API</a>
+          <a href="https://rian.exonity.tech/" class="btn" target="_blank" rel="noopener noreferrer">Personal Website</a>
+          <a href="#" class="btn" onclick="openModal('rian')">About Me</a>
+        </div>
+      </div>
+
     </div>
-
-    <div class="card">
-      <h3>Panpan</h3>
-      <p>Backend Developer</p>
-      <p>+62 812-3456-7890</p>
-      <a class="btn about-btn" data-name="panpan" href="javascript:void(0)">About Me</a>
-    </div>
-
-    <div class="card">
-      <h3>Rian</h3>
-      <p>UI/UX Designer</p>
-      <p>+62 813-9876-5432</p>
-      <a class="btn about-btn" data-name="rian" href="javascript:void(0)">About Me</a>
-    </div>
-
-  </div>
-</section>
+  </section>
+</main>
 
 <footer>
   &copy; 2025 Zafira's Developer. All Rights Reserved.
 </footer>
 
-<!-- Modal Popup -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close-btn">&times;</span>
-    <h3 id="modal-name"></h3>
-    <p id="modal-desc"></p>
+<!-- Modal -->
+<div id="modal-bg" class="modal-bg">
+  <div class="modal" id="modal-content">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <h4 id="modal-title"></h4>
+    <p id="modal-text"></p>
   </div>
 </div>
 
 <script>
-  const aboutData = {
+  // Data about developers
+  const devDetails = {
     jul: {
       name: "Jul",
-      desc: "Spesialis dalam HTML, CSS, dan JavaScript. Fokus pada responsive dan performance."
+      role: "Frontend Developer",
+      phone: "+62 822-2941-2573",
+      about: "Jul is a passionate frontend developer specializing in React and Vue. Loves clean UI and performance."
     },
     panpan: {
-      name: "Panpan",
-      desc: "Ahli dalam Node.js & database. Sering ngoding backend buat sistem WhatsApp bot."
+      name: "Pan Pan",
+      role: "Fullstack Developer",
+      phone: "+62 857-0210-72505",
+      about: "Pan Pan is skilled in backend and frontend development, focusing on Node.js and modern web apps."
     },
     rian: {
       name: "Rian",
-      desc: "Fokus pada tampilan dan pengalaman pengguna. Desain clean, minimalis & estetik."
+      role: "Backend Developer",
+      phone: "+62 815-2936-92739",
+      about: "Rian specializes in backend architecture, APIs, and cloud solutions with a strong focus on scalability."
     }
   };
 
-  const modal = document.getElementById('modal');
-  const modalName = document.getElementById('modal-name');
-  const modalDesc = document.getElementById('modal-desc');
-  const closeBtn = document.querySelector('.close-btn');
+  function openModal(devId) {
+    const modalBg = document.getElementById('modal-bg');
+    const modalTitle = document.getElementById('modal-title');
+    const modalText = document.getElementById('modal-text');
 
-  document.querySelectorAll('.about-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const key = btn.getAttribute('data-name');
-      if (aboutData[key]) {
-        modalName.textContent = aboutData[key].name;
-        modalDesc.textContent = aboutData[key].desc;
-        modal.style.display = "flex";
-      }
-    });
-  });
+    if(devDetails[devId]) {
+      const dev = devDetails[devId];
+      modalTitle.textContent = dev.name + " - " + dev.role;
+      modalText.innerHTML = `<strong>Contact:</strong> ${dev.phone}<br><br>${dev.about}`;
+      modalBg.classList.add('active');
+    }
+  }
 
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = "none";
-  });
+  function closeModal() {
+    document.getElementById('modal-bg').classList.remove('active');
+  }
 
-  window.addEventListener('click', (e) => {
-    if(e.target === modal) {
-      modal.style.display = "none";
+  // Close modal on clicking outside modal content
+  document.getElementById('modal-bg').addEventListener('click', (e) => {
+    if(e.target === document.getElementById('modal-bg')) {
+      closeModal();
     }
   });
 </script>
