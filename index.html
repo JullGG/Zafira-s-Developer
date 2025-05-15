@@ -1,139 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Personal Portfolio</title>
-  <link rel="stylesheet" href="style.css"/>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-    body {
-      background-image: url('https://files.catbox.moe/2qst6b.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: -1;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Zafira's Developer</title>
+<link rel="stylesheet" href="style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* Tambahan CSS untuk modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    background: #222;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    position: relative;
+  }
+  .close-btn {
+    position: absolute;
+    top: 8px; right: 12px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
 
-  <header class="header">
-    <a href="#" class="logo">Zafira's Developer</a>
-    <i class="fas fa-bars" id="menu-icon" onclick="toggleMenu()"></i>
-    <nav class="navbar">
-      <a href="#home" class="active">Home</a>
-      <a href="#about">About</a>
-      <a href="#team">Team</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<nav>
+  <h2>Zafira's Developer</h2>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <section class="home" id="home">
-    <div class="home-content">
-      <h1>Hello, I'm <span>Zafira's Developer</span></h1>
-      <div class="text-animate">
-        <h3>Frontend Developer</h3>
-      </div>
-      <p>This is a brief introduction or tagline.</p>
-      <div class="btn-box">
-        <a href="#" class="btn">Hire Me</a>
-        <a href="#" class="btn">Let's Talk</a>
-      </div>
-    </div>
-    <div class="home-sci">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in"></i></a>
-    </div>
-  </section>
-
-  <section class="team" id="team">
-    <h2 class="heading">Our <span>Developers</span></h2>
-    <div class="team-container">
-      <div class="team-box">
-        <img src="https://files.catbox.moe/46hnrq.jpg" alt="Jul" />
-        <div class="team-layer">
-          <h4>Jul</h4>
-          <p>Frontend Developer<br>+62 822-2941-2573</p>
-          <a href="https://exonity.tech" class="btn">REST API</a>
-          <a href="https://juul-web-id.xyz" class="btn">Personal Website</a>
-          <a href="#" class="btn" onclick="openModal('jul')">About Me</a>
-        </div>
-      </div>
-      <div class="team-box">
-        <img src="https://files.catbox.moe/zgacky.jpg" alt="Pan Pan" />
-        <div class="team-layer">
-          <h4>Pan Pan</h4>
-          <p>Fullstack Developer<br>+62 857-0210-72505</p>
-          <a href="https://exonity.tech" class="btn">REST API</a>
-          <a href="https://dash-colongan.vercel.app/#about" class="btn">Personal Website</a>
-          <a href="#" class="btn" onclick="openModal('panpan')">About Me</a>
-        </div>
-      </div>
-      <div class="team-box">
-        <img src="https://files.catbox.moe/cv0yc3.jpg" alt="Rian" />
-        <div class="team-layer">
-          <h4>Rian</h4>
-          <p>Backend Developer<br>+62 815-2936-92739</p>
-          <a href="https://exonity.tech" class="btn">REST API</a>
-          <a href="https://rian.exonity.tech/" class="btn">Personal Website</a>
-          <a href="#" class="btn" onclick="openModal('rian')">About Me</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="footer-text">
-      <p>&copy; 2025 Zafira's Developer | All Rights Reserved.</p>
-    </div>
-    <div class="footer-iconTop">
-      <a href="#home"><i class="fas fa-arrow-up"></i></a>
-    </div>
-  </footer>
-
-  <!-- Modals -->
-  <div id="modal-jul" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('jul')">&times;</span>
-      <h3>About Jul</h3>
-      <p>Jul is a frontend developer who specializes in building modern, responsive interfaces using HTML, CSS, and JavaScript.</p>
+<section class="header">
+  <div>
+    <h1>Hello, I'm <span>Zafira's Developer</span></h1>
+    <h3>Frontend Developer</h3>
+    <p>This is a brief introduction or tagline.</p>
+    <div class="buttons">
+      <a href="#team">Hire Me</a>
+      <a href="#contact">Let's Talk</a>
     </div>
   </div>
+</section>
 
-  <div id="modal-panpan" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('panpan')">&times;</span>
-      <h3>About Pan Pan</h3>
-      <p>Pan Pan is a fullstack developer experienced in both frontend and backend development, with a passion for building scalable applications.</p>
+<section class="team" id="team">
+  <h2>Our <span>Developers</span></h2>
+  <div class="cards">
+
+    <div class="card">
+      <h3>Jul</h3>
+      <p>Frontend Developer</p>
+      <p>+62 822-2941-2573</p>
+      <a class="btn about-btn" data-name="jul" href="javascript:void(0)">About Me</a>
     </div>
-  </div>
 
-  <div id="modal-rian" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('rian')">&times;</span>
-      <h3>About Rian</h3>
-      <p>Rian is a backend developer focused on databases, APIs, and server-side logic using modern tech stacks.</p>
+    <div class="card">
+      <h3>Panpan</h3>
+      <p>Backend Developer</p>
+      <p>+62 812-3456-7890</p>
+      <a class="btn about-btn" data-name="panpan" href="javascript:void(0)">About Me</a>
     </div>
-  </div>
 
-  <script>
-    function toggleMenu() {
-      var menu = document.getElementById("hamburger-menu");
-      menu.classList.toggle("active");
+    <div class="card">
+      <h3>Rian</h3>
+      <p>UI/UX Designer</p>
+      <p>+62 813-9876-5432</p>
+      <a class="btn about-btn" data-name="rian" href="javascript:void(0)">About Me</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Zafira's Developer. All Rights Reserved.
+</footer>
+
+<!-- Modal Popup -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3 id="modal-name"></h3>
+    <p id="modal-desc"></p>
+  </div>
+</div>
+
+<script>
+  const aboutData = {
+    jul: {
+      name: "Jul",
+      desc: "Spesialis dalam HTML, CSS, dan JavaScript. Fokus pada responsive dan performance."
+    },
+    panpan: {
+      name: "Panpan",
+      desc: "Ahli dalam Node.js & database. Sering ngoding backend buat sistem WhatsApp bot."
+    },
+    rian: {
+      name: "Rian",
+      desc: "Fokus pada tampilan dan pengalaman pengguna. Desain clean, minimalis & estetik."
     }
-  </script>
+  };
+
+  const modal = document.getElementById('modal');
+  const modalName = document.getElementById('modal-name');
+  const modalDesc = document.getElementById('modal-desc');
+  const closeBtn = document.querySelector('.close-btn');
+
+  document.querySelectorAll('.about-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-name');
+      if (aboutData[key]) {
+        modalName.textContent = aboutData[key].name;
+        modalDesc.textContent = aboutData[key].desc;
+        modal.style.display = "flex";
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener('click', (e) => {
+    if(e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+</script>
 
 </body>
 </html>
